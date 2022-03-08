@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://66666666.cf/posts/Ubuntu%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8%E5%92%8C%E5%BC%80%E5%90%AFBBR/</loc>
+    <loc>https://66666666.cf/posts/hello-world/</loc>
     
-    <lastmod>2022-03-07</lastmod>
+    <lastmod>2022-03-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://66666666.cf/posts/hello-world/</loc>
+    <loc>https://66666666.cf/posts/Ubuntu%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8%E5%92%8C%E5%BC%80%E5%90%AFBBR/</loc>
     
-    <lastmod>2022-03-07</lastmod>
+    <lastmod>2022-03-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +22,7 @@
 
   <url>
     <loc>https://66666666.cf/</loc>
-    <lastmod>2022-03-07</lastmod>
+    <lastmod>2022-03-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
