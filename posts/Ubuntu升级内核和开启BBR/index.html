@@ -20,17 +20,18 @@
     var CONFIG = {"hostname":"66666666.cf","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#EE9A00","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Ubuntu升级最新Kernel内核并清理旧内核，开启BBR，下面是详细过程： 升级新内核首先打开Ubuntu-Kernel官网如下：  https:&#x2F;&#x2F;kernel.ubuntu.com&#x2F;~kernel-ppa&#x2F;mainline&#x2F; 往下翻，找到最新版内核，比如v5.8版，下面就以5.8版内核为范例演示，点开amd64，会看到一堆deb文件，如图： Kernel Download 选择图片中标记">
+  <meta name="description" content="Ubuntu升级最新Kernel内核并清理旧内核，开启BBR，下面是详细过程：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu升级内核和开启BBR">
 <meta property="og:url" content="https://66666666.cf/posts/Ubuntu%E5%8D%87%E7%BA%A7%E5%86%85%E6%A0%B8%E5%92%8C%E5%BC%80%E5%90%AFBBR/index.html">
 <meta property="og:site_name" content="6666666">
-<meta property="og:description" content="Ubuntu升级最新Kernel内核并清理旧内核，开启BBR，下面是详细过程： 升级新内核首先打开Ubuntu-Kernel官网如下：  https:&#x2F;&#x2F;kernel.ubuntu.com&#x2F;~kernel-ppa&#x2F;mainline&#x2F; 往下翻，找到最新版内核，比如v5.8版，下面就以5.8版内核为范例演示，点开amd64，会看到一堆deb文件，如图： Kernel Download 选择图片中标记">
+<meta property="og:description" content="Ubuntu升级最新Kernel内核并清理旧内核，开启BBR，下面是详细过程：">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://66666666.cf/images/bbr.png">
 <meta property="article:published_time" content="2022-03-07T18:35:21.000Z">
-<meta property="article:modified_time" content="2022-03-08T11:37:21.767Z">
+<meta property="article:modified_time" content="2022-03-08T15:09:46.863Z">
 <meta property="article:author" content="Anonymous">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://66666666.cf/images/bbr.png">
 
@@ -197,7 +198,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-03-08 02:35:21 / 修改时间：19:37:21" itemprop="dateCreated datePublished" datetime="2022-03-08T02:35:21+08:00">2022-03-08</time>
+              <time title="创建时间：2022-03-08 02:35:21 / 修改时间：23:09:46" itemprop="dateCreated datePublished" datetime="2022-03-08T02:35:21+08:00">2022-03-08</time>
             </span>
 
           
@@ -212,12 +213,14 @@
 
       
         <div class="post-body" itemprop="articleBody">
-<p>Ubuntu升级最新Kernel内核并清理旧内核，开启BBR，下面是详细过程：</p>
+<p>Ubuntu升级最新Kernel内核并清理旧内核，开启BBR，下面是详细过程：
+<span id="more"></span>
+</p>
 <h3 id="升级新内核"><a href="#升级新内核" class="headerlink" title="升级新内核"></a>升级新内核</h3><p>首先打开Ubuntu-Kernel官网如下：</p>
 <span id="more"></span>
 <p><a target="_blank" rel="noopener" href="https://kernel.ubuntu.com/~kernel-ppa/mainline/">https://kernel.ubuntu.com/~kernel-ppa/mainline/</a></p>
 <p>往下翻，找到最新版内核，比如v5.8版，下面就以5.8版内核为范例演示，点开amd64，会看到一堆deb文件，如图：</p>
-<a class="fancybox fancybox.image" href="/posts/kernel_bbr/bbr.png" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default" rel="default" title="Kernel Download" data-caption="Kernel Download"><img src="/images/bbr.png" class="" title="Kernel Download"><p class="image-caption">Kernel Download</p></a>
+<a class="fancybox fancybox.image" href="/posts/bbr.png" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="default" rel="default" title="Kernel Download" data-caption="Kernel Download"><img src="/images/bbr.png" class="" title="Kernel Download"><p class="image-caption">Kernel Download</p></a>
 <p>选择图片中标记的3个文件下载:</p>
 <figure class="highlight apache"><div class="table-container"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-attribute">wget</span> https://kernel.ubuntu.com/~kernel-ppa/mainline/v<span class="hljs-number">5</span>.<span class="hljs-number">8</span>/amd<span class="hljs-number">64</span>/linux-headers-<span class="hljs-number">5</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span>-<span class="hljs-number">050800</span>_<span class="hljs-number">5</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span>-<span class="hljs-number">050800</span>.<span class="hljs-number">202008022230</span>_all.deb</span><br><span class="line"></span><br><span class="line"><span class="hljs-attribute">wget</span> https://kernel.ubuntu.com/~kernel-ppa/mainline/v<span class="hljs-number">5</span>.<span class="hljs-number">8</span>/amd<span class="hljs-number">64</span>/linux-image-unsigned-<span class="hljs-number">5</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span>-<span class="hljs-number">050800</span>-generic_<span class="hljs-number">5</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span>-<span class="hljs-number">050800</span>.<span class="hljs-number">202008022230</span>_amd<span class="hljs-number">64</span>.deb</span><br><span class="line"></span><br><span class="line"><span class="hljs-attribute">wget</span> https://kernel.ubuntu.com/~kernel-ppa/mainline/v<span class="hljs-number">5</span>.<span class="hljs-number">8</span>/amd<span class="hljs-number">64</span>/linux-modules-<span class="hljs-number">5</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span>-<span class="hljs-number">050800</span>-generic_<span class="hljs-number">5</span>.<span class="hljs-number">8</span>.<span class="hljs-number">0</span>-<span class="hljs-number">050800</span>.<span class="hljs-number">202008022230</span>_amd<span class="hljs-number">64</span>.deb</span><br></pre></td></tr></tbody></table></div><div class="copy-btn"><i class="fa fa-copy fa-fw"></i></div></figure>
 <p>然后执行安装：</p>
@@ -257,6 +260,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"># linux</a>
+          </div>
 
         
 
@@ -267,7 +273,10 @@
     <a href="/posts/hello-world/" rel="prev" title="Hello World">
       <i class="fa fa-chevron-left"></i> Hello World
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/posts/Python-NodeJs-%E9%80%9A%E8%BF%87%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%A6%81%E7%94%A8ssl%E8%AF%81%E4%B9%A6%E8%AE%A4%E8%AF%81/" rel="next" title="Python NodeJs 通过设置环境变量禁用ssl证书认证">
+      Python NodeJs 通过设置环境变量禁用ssl证书认证 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -343,9 +352,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
